@@ -9,7 +9,6 @@ import Foundation
 
 /// Builder for security information for each HTTP action.
 class OpenAPISecurityBuilder {
-
     let authorizations: [APIAuthorizationType]?
     let headers: [APIHeader]?
 
@@ -34,6 +33,7 @@ class OpenAPISecurityBuilder {
 
             }
         }
+
 
         guard let authorizations = self.authorizations else {
             return openAPISecuritySchema

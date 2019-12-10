@@ -35,10 +35,13 @@ class OpenAPIMediaTypeBuilder {
         return openAPIMediaType
     }
 
-    func createObjectReference(for type: Any.Type) -> String {
-        let typeName = String(describing: type)
+    func createObjectReference(for _type: Any.Type) -> String {
+        let typeName = String(reflecting: _type).components(separatedBy: "App.").last ?? String(describing: _type)
+//        let requestMirror: Mirror = Mirror(reflecting: _type)
+//        let typeName = String(describing: requestMirror.subjectType)
 
-        guard let object = objects.first(where: { $0.defaultName == typeName }) else {
+
+        guard let object = self.objects.first(where: { $0.defaultName == typeName }) else {
             return "#/components/schemas/\(typeName)"
         }
 

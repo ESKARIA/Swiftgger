@@ -10,12 +10,12 @@ import Foundation
 /// Information about (request/response) Swift object.
 public class APIObject {
     let object: Any
-    let defaultName: String
+    let defaultName: String 
     let customName: String?
 
-    public init(object: Any, customName: String? = nil) {
+    public init(object: Any, type: Any.Type, customName: String? = nil) {
         self.object = object
         self.customName = customName
-        self.defaultName = String(describing: type(of: object))
+        self.defaultName = String(reflecting: type).components(separatedBy: "App.").last ?? String(describing: type)
     }
 }

@@ -20,7 +20,7 @@ class OpenAPISchemasBuilder {
 
         var schemas: [String: OpenAPISchema] = [:]
         for object in self.objects {
-            add(object: object.object, withCustomName: object.customName, toSchemas: &schemas)
+            add(object: object.object, withCustomName: object.defaultName, toSchemas: &schemas)
         }
 
         return schemas
